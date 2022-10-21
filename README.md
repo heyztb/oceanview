@@ -1,3 +1,3 @@
 # oceanview
 
-Transaction tracking && merchant tools for Solana
+Merchant tools for Solana
