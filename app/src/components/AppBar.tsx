@@ -46,11 +46,6 @@ export const AppBar: FC = (props) => {
                 Home
               </a>
             </Link>
-            <Link href="/basics">
-              <a className="btn btn-ghost btn-sm rounded-btn normal-case">
-                Basics
-              </a>
-            </Link>
           </div>
         </div>
 
