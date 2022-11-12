@@ -1,4 +1,4 @@
-import { FC, FormEvent, useState } from "react"
+import { FC, FormEvent, useEffect, useState } from "react"
 import { sendEarlyAccessEmail } from "utils/email"
 import pkg from "../../../package.json"
 
@@ -7,9 +7,19 @@ export const HomeView: FC = ({}) => {
     e.preventDefault()
     fetch(`api/email?address=${userEmail}`)
     setUserEmail("")
+    setFormSubmitted(true)
   }
 
   const [userEmail, setUserEmail] = useState("")
+  const [formSubmitted, setFormSubmitted] = useState(false)
+
+  useEffect(() => {
+    if (formSubmitted) {
+      window.setTimeout(() => {
+        setFormSubmitted(false)
+      }, 3000)
+    }
+  }, [formSubmitted])
 
   return (
     <div className="hero min-h-[80vh] p-4">
@@ -41,6 +51,11 @@ export const HomeView: FC = ({}) => {
             value="Sign up for early access"
           />
         </form>
+        {formSubmitted ? (
+          <p className="text-sm text-green-500 -mt-2">
+            Early access sign-up successful!
+          </p>
+        ) : null}
       </div>
     </div>
   )
